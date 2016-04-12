@@ -1,0 +1,40 @@
+<doctype html>
+  <html ng-app="baseballApp">
+
+  <head>
+    <base href="/"/>
+    <title>Baseball Data Viewer</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css"/>
+  </head>
+
+  <body>
+    <header class="jumbotron text-center">
+      <h1>Baseball Stats</h1>
+      <h3>By Chip Keyes</h3>
+    </header>
+    <ng-view></ng-view>
+    <!-- load jquery and d3 -->
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js"></script>
+
+    <!-- load angular -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.min.js"></script>
+
+    <!-- load app -->
+    <script src="/app.js"></script>
+
+    <!-- controllers -->
+    <script src="/js/controllers/NewPlayerCtrl.js"></script>
+
+    <!-- services -->
+    <script src="/js/services/playersService.js"></script>
+
+    <!-- directives -->
+    <script src="/js/directives/DatePickerDirective.js"></script>
+  </body>
+
+  </html>
