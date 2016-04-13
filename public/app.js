@@ -1,4 +1,4 @@
-var baseballApp = angular.module('baseballApp', ['ngRoute'])
+var baseballApp = angular.module('baseballApp', ['ngRoute', 'nvd3'])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider.
     when('/newplayer', {

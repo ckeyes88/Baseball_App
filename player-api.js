@@ -3,8 +3,8 @@ var router = express.Router();
 var path = require('path');
 var fs = require('fs');
 var csv = require('csv');
+var d3 = require('d3');
 var Player = require('./models/Player');
-
 
 router.get('/players', function(req, res) {
   Player.getPlayers(function(err, players) {

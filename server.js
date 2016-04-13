@@ -4,7 +4,7 @@ var mongoose = require('mongoose'); // ORM for mongodb
 var morgan = require('morgan'); // Log server data to console
 var bodyParser = require('body-parser'); // access POST body
 var path = require('path'); // access filesystem
-
+var multer = require('multer'); // multipart form data middleware
 
 // Configurations
 app.set('views', __dirname + "/public"); // tell server where views are found
@@ -32,6 +32,9 @@ app.use(bodyParser.urlencoded({
 
 // Register public directory for client side code and assets
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Middleware to attach multipart/formdata to the request: Allow file uploads
+app.use(multer({dest: './public/uploads'}).single('file'));
 
 // Register api routes
 app.use('/api', api);
