@@ -22,3 +22,11 @@ module.exports.savePlayer = function(player, callback){
 module.exports.getPlayers = function(callback) {
   Player.find().exec(callback);
 }
+
+module.exports.getPlayerByName = function(name, callback) {
+  Player.findOne({playername: name}).exec(callback);
+}
+
+module.exports.addGameToPlayer = function(name, game, callback) {
+  Player.update({playername: name}, {$push: {gamestats:game}}).exec(callback);
+}

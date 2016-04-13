@@ -12,6 +12,10 @@ var baseballApp = angular.module('baseballApp', ['ngRoute', 'nvd3'])
     .when('/notfound', {
       templateUrl: 'templates/404page.html'
     })
+    .when('/upload', {
+      templateUrl: 'templates/UploadCSV.html',
+      controller: 'UploadCSVCtrl'
+    })
     .otherwise({
       redirectTo: '/notfound'
     })

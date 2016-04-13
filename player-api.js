@@ -29,14 +29,72 @@ router.post('/players', function(req, res) {
   newGame.innings = req.body.gamestats.innings;
   newGame.dateplayed = new Date(req.body.gamestats.dateplayed);
   newPlayer.gamestats = [newGame];
-  console.log(newPlayer);
-  Player.savePlayer(newPlayer, function(err) {
-    if (err) {
-      console.log(err);
-      res.json(err);
+  var response;
+  Player.getPlayerByName(newPlayer.playername, function(err, player) {
+    if(err) {
+      response = err;
+    } else if(player) {
+      Player.addGameToPlayer(player.playername, newGame, function(err, message) {
+        if(err) {
+          response = err;
+        } else {
+          response = message;
+        }
+      });
     } else {
-      res.json(newPlayer);
+      Player.savePlayer(newPlayer, function(err) {
+        if (err) {
+          response = err;
+        } else {
+          response = newPlayer;
+        }
+      });
     }
+  });
+
+
+});
+
+router.post('/players/multiple', function (req, res) {
+
+  req.body.forEach(function(currentPlayer, index, array) {
+    var newPlayer = new Player();
+    newPlayer.playername = currentPlayer.playername
+    var newGame = {
+      place: currentPlayer.place,
+      ballsfaced: currentPlayer.ballsfaced,
+      hitcount: currentPlayer.hitcount,
+      innings: currentPlayer.innings,
+      dateplayed: new Date(currentPlayer.dateplayed)
+    }
+    newPlayer.gamestats = [newGame];
+    var response;
+    Player.getPlayerByName(newPlayer.playername, function(err, player) {
+      if(err) {
+        response = err;
+      } else if(player) {
+        Player.addGameToPlayer(player.playername, newGame, function(err, message) {
+          if(err) {
+            console.log(err);
+            response = err;
+          } else {
+            response = message;
+          }
+        });
+      } else {
+        Player.savePlayer(newPlayer, function(err) {
+          if (err) {
+            console.log(err);
+
+          } else {
+            response = newPlayer
+          }
+        });
+      }
+    });
+    res.send(response);
+
+
   });
 
 });

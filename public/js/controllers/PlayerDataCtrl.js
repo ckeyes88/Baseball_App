@@ -12,12 +12,8 @@ baseballApp.controller('PlayerDataCtrl',
         showLegend: false,
         showDistX: true,
         showDistY: true,
-        useInteractiveGuideline: false,
-        interactive: true,
-        tooltipContentFunction: function(key, x, y, e, graph) {
-          return "<h1>" + key + "</h3>" + "<p>" + x + ":" + y + "</p>";
-        },
         duration: 350,
+
         xAxis: {
           axisLabel: 'Hit Count',
           tickFormat: function(d) {
@@ -57,12 +53,12 @@ baseballApp.controller('PlayerDataCtrl',
             inningCount += currentGame.innings;
             games++;
           });
-          
+
           playerData.push({
             key: name,
             values: [{
               x: (ballCount / games),
-              y: (hitCount / games),
+              y: (hitCount / games)
             }]
           });
         });

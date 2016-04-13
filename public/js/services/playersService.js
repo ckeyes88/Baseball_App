@@ -6,8 +6,14 @@ baseballApp.service('playersService', ['$http', function($http) {
   }
 
   this.addPlayer = function(player, callback) {
-    $http.post('/api/players', player).success(function (data) {
-      callback(data);
+    $http.post('/api/players', player).success(function () {
+      callback();
+    });
+  }
+
+  this.addCSVofPlayers = function(players, callback) {
+    $http.post('/api/players/multiple', d3.csv.parse(players)).success(function () {
+      callback();
     });
   }
 }])
