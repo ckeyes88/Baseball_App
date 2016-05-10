@@ -51,7 +51,7 @@ router.post('/players', function(req, res) {
       });
     }
   });
-
+  res.send(response);
 
 });
 

@@ -6,6 +6,7 @@ baseballApp.service('playersService', ['$http', function($http) {
   }
 
   this.addPlayer = function(player, callback) {
+    console.log(player);
     $http.post('/api/players', player).success(function () {
       callback();
     });

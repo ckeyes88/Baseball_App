@@ -9,21 +9,27 @@ baseballApp.controller('PlayerDataCtrl',
         scatter: {
           onlyCircles: true
         },
+        title: {
+          enabled: true,
+          title: "Average Hit Count vs. Balls Faced"
+        },
+        forceX: [0, 50],
+        forceY: [0, 50],
         showLegend: false,
         showDistX: true,
         showDistY: true,
         duration: 350,
 
         xAxis: {
-          axisLabel: 'Hit Count',
+          axisLabel: 'Balls Faced',
           tickFormat: function(d) {
-            return d3.format('.02f')(d);
+            return d3.format('.01f')(d);
           }
         },
         yAxis: {
-          axisLabel: 'Balls Faced',
+          axisLabel: 'Hit Count',
           tickFormat: function(d) {
-            return d3.format('.02f')(d);
+            return d3.format('.01f')(d);
           },
           axisLabelDistance: -5
         }
